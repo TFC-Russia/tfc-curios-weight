@@ -18,6 +18,10 @@ public class CuriosHelpers {
   public static int countOverburdened(final LivingEntity livingEntity) {
     int overweightCount = 0;
 
+    if (Config.enableWeightCalculations == false) {
+      return overweightCount;
+    }
+
     // TODO implement curios api check (back slot)
     if (ModList.get().isLoaded("curios")) {
       LazyOptional<ICuriosItemHandler> lazyCuriosInventory = CuriosApi.getCuriosInventory(livingEntity);
