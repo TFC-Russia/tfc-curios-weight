@@ -31,7 +31,7 @@ public final class ForgeEventHandler {
       if (hugeHeavyCount >= 1) {
         player.addEffect(Helpers.getExhausted(false));
       }
-      if (hugeHeavyCount == 2) {
+      if (hugeHeavyCount >= 2) {
         player.addEffect(Helpers.getOverburdened(false));
       }
     }

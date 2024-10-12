@@ -29,6 +29,8 @@ public class CuriosHelpers {
       return overweightCount;
     }
 
+    int curiosWeightCount = 0;
+
     // Counts Curios slots to the full weight
     if (ModList.get().isLoaded("curios")) {
       LazyOptional<ICuriosItemHandler> lazyCuriosInventory = CuriosApi.getCuriosInventory(livingEntity);
@@ -45,17 +47,13 @@ public class CuriosHelpers {
 
             if (size.getWeight(stack) == Weight.VERY_HEAVY
                 && size.getSize(stack) == Size.HUGE) {
-              overweightCount++;
-
-              if (overweightCount == 2) {
-                return overweightCount;
-              }
+              curiosWeightCount++;
             }
           }
         }
       }
     }
 
-    return overweightCount;
+    return overweightCount + curiosWeightCount;
   }
 }
