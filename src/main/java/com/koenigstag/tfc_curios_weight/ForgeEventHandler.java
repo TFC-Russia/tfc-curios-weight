@@ -28,11 +28,11 @@ public final class ForgeEventHandler {
     if (!level.isClientSide() && !player.getAbilities().invulnerable && TFCConfig.SERVER.enableOverburdening.get()
         && level.getGameTime() % Config.calculateWeightEachNTicks == 0) {
       final int hugeHeavyCount = CuriosHelpers.countOverburdened(player);
-      if (hugeHeavyCount >= 1) {
-        player.addEffect(CuriosHelpers.getExhausted(false));
-      }
+
       if (hugeHeavyCount >= 2) {
         player.addEffect(CuriosHelpers.getOverburdened(false));
+      } else if (hugeHeavyCount == 1) {
+        player.addEffect(CuriosHelpers.getExhausted(false));
       }
     }
   }
