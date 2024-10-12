@@ -42,18 +42,34 @@ public class CuriosHelpers {
         for (int i = 0; i < curiosContainer.getSlots(); i++) {
           final ItemStack stack = curiosContainer.getStackInSlot(i);
 
-          if (!stack.isEmpty()) {
-            IItemSize size = ItemSizeManager.get(stack);
+          curiosWeightCount += getItemStackWeightInt(stack);
 
-            if (size.getWeight(stack) == Weight.VERY_HEAVY
-                && size.getSize(stack) == Size.HUGE) {
-              curiosWeightCount++;
-            }
+          if (curiosWeightCount >= 2) {
+            return curiosWeightCount;
           }
         }
       }
     }
 
+    // Do not count one curios slot (backpack) as exhausting
+    // Player can still carry one overweighed slot (e.g. backpack)
+    if (overweightCount == 0 && curiosWeightCount == 1) {
+      return overweightCount;
+    }
+
     return overweightCount + curiosWeightCount;
+  }
+
+  public static int getItemStackWeightInt(ItemStack itemStack) {
+    if (!itemStack.isEmpty()) {
+      IItemSize size = ItemSizeManager.get(itemStack);
+
+      if (size.getWeight(itemStack) == Weight.VERY_HEAVY
+          && size.getSize(itemStack) == Size.HUGE) {
+        return 1;
+      }
+    }
+
+    return 0;
   }
 }
