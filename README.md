@@ -4,6 +4,11 @@
 
 This is a simple TFC addon that adds a weight calculations to the TFC mod for Curios slots. It is a copy of the same calculations for player inventory from TFC but for Curios slots.
 
+## Requirements
+
+- This mod requires the Curios API 5.10.0+.
+- This mod requires TerraFirmaCraft for 1.20+
+
 ## Changelog
 
 ### 1.0.0
@@ -20,5 +25,8 @@ PRs are welcome. You may also open an issue if you have any suggestions or found
 
 ## License
 
-This mod is licensed under the MIT License. You may use it in your modpacks or modify it as you wish.
+This mod is under the MIT License. This means that you can include it in your modpack without asking my permission.
 
+TFC, which this mod is an addon for, is under the EUPL license. When using portions of this mod, be aware that the TFC license may apply. You can view that license on that mod page.
+
+Curios, which this mod depends on, is under the LGPL. You can view that license on that mod page.
