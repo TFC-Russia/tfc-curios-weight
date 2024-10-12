@@ -1,6 +1,7 @@
 package com.koenigstag.tfc_curios_weight;
 
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.ModList;
@@ -13,16 +14,22 @@ import net.dries007.tfc.common.capabilities.size.IItemSize;
 import net.dries007.tfc.common.capabilities.size.ItemSizeManager;
 import net.dries007.tfc.common.capabilities.size.Size;
 import net.dries007.tfc.common.capabilities.size.Weight;
+import net.dries007.tfc.util.Helpers;
 
 public class CuriosHelpers {
-  public static int countOverburdened(final LivingEntity livingEntity) {
+  public static int countOverburdened(final Player livingEntity) {
     int overweightCount = 0;
+
+    Container container = livingEntity.getInventory();
+
+    // Counts player inventory to the full weight
+    overweightCount += Helpers.countOverburdened(container);
 
     if (Config.enableWeightCalculations == false) {
       return overweightCount;
     }
 
-    // TODO implement curios api check (back slot)
+    // Counts Curios slots to the full weight
     if (ModList.get().isLoaded("curios")) {
       LazyOptional<ICuriosItemHandler> lazyCuriosInventory = CuriosApi.getCuriosInventory(livingEntity);
 
