@@ -26,7 +26,7 @@ public final class ForgeEventHandler {
 
     // Copy of TFC's onPlayerTick but with CuriosHelper calculations
     if (!level.isClientSide() && !player.getAbilities().invulnerable && TFCConfig.SERVER.enableOverburdening.get()
-        && level.getGameTime() % 20 == 0) {
+        && level.getGameTime() % Config.calculateWeightEachNTicks == 0) {
       final int hugeHeavyCount = CuriosHelpers.countOverburdened(player);
       if (hugeHeavyCount >= 1) {
         player.addEffect(Helpers.getExhausted(false));
