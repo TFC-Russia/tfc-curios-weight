@@ -14,6 +14,7 @@ This is a simple TFC addon that adds a weight calculations to the TFC mod for Cu
 ### 1.0.0
 - Initial release of the mod. It adds weight calculations for all Curios slots.
 - There is a config option to disable the mod.
+- There is special case when Player will not receive TFC Exhausted effect - when **at most one** item in Curios slots is HUGE + VERY_HEAVY, allowing to carry one heavy backpack in Curios slot without a debuff. Any other combinations of HUGE + VERY_HEAVY items will lead to debuffs.
 
 ## To Do List
 
