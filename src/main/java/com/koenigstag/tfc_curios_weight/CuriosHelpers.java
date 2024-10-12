@@ -15,7 +15,7 @@ import net.dries007.tfc.common.capabilities.size.IItemSize;
 import net.dries007.tfc.common.capabilities.size.ItemSizeManager;
 import net.dries007.tfc.common.capabilities.size.Size;
 import net.dries007.tfc.common.capabilities.size.Weight;
-import net.dries007.tfc.common.effect.TFCEffects;
+import net.dries007.tfc.common.TFCEffects;
 import net.dries007.tfc.util.Helpers;
 
 public class CuriosHelpers {
