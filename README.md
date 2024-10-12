@@ -12,7 +12,7 @@ This is a simple TFC addon that adds a weight calculations to the TFC mod for Cu
 
 ## To Do List
 
-[ ] Implement a config option to change the list of Curios slots to calculate weight for.
+- [ ] Implement a config option to change the list of Curios slots to calculate weight for.
 
 ## Contributing
 
