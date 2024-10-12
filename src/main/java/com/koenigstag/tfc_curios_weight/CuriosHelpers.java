@@ -76,10 +76,10 @@ public class CuriosHelpers {
   }
 
   public static MobEffectInstance getOverburdened(boolean visible) {
-    return new MobEffectInstance(TFCEffects.OVERBURDENED.holder(), Config.calculateWeightEachNTicks + 5, 0, false, visible);
+    return new MobEffectInstance(TFCEffects.OVERBURDENED.get(), Config.calculateWeightEachNTicks + 5, 0, false, visible);
   }
 
   public static MobEffectInstance getExhausted(boolean visible) {
-    return new MobEffectInstance(TFCEffects.EXHAUSTED.holder(), Config.calculateWeightEachNTicks + 5, 0, false, visible);
+    return new MobEffectInstance(TFCEffects.EXHAUSTED.get(), Config.calculateWeightEachNTicks + 5, 0, false, visible);
   }
 }
