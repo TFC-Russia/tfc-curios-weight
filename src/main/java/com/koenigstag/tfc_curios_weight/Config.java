@@ -20,7 +20,7 @@ public class Config {
 
         public static final ForgeConfigSpec.IntValue CALCULATE_WEIGHT_EACH_N_TICKS = BUILDER
                         .comment("Calculate weight every N ticks. Default: 20 ticks = 1 sec")
-                        .defineInRange("calculte_weight_each_n_ticks", 20, 1, Integer.MAX_VALUE);
+                        .defineInRange("calculate_weight_each_n_ticks", 20, 1, Integer.MAX_VALUE);
 
         private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SLOT_NAME_STRINGS = BUILDER
                         .comment("WIP. A list of slots to check in weight calculation.")
