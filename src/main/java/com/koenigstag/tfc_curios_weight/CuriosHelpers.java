@@ -1,6 +1,7 @@
 package com.koenigstag.tfc_curios_weight;
 
 import net.minecraft.world.Container;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.LazyOptional;
@@ -14,6 +15,7 @@ import net.dries007.tfc.common.capabilities.size.IItemSize;
 import net.dries007.tfc.common.capabilities.size.ItemSizeManager;
 import net.dries007.tfc.common.capabilities.size.Size;
 import net.dries007.tfc.common.capabilities.size.Weight;
+import net.dries007.tfc.common.effect.TFCEffects;
 import net.dries007.tfc.util.Helpers;
 
 public class CuriosHelpers {
@@ -71,5 +73,13 @@ public class CuriosHelpers {
     }
 
     return 0;
+  }
+
+  public static MobEffectInstance getOverburdened(boolean visible) {
+    return new MobEffectInstance(TFCEffects.OVERBURDENED.holder(), Config.calculateWeightEachNTicks + 5, 0, false, visible);
+  }
+
+  public static MobEffectInstance getExhausted(boolean visible) {
+    return new MobEffectInstance(TFCEffects.EXHAUSTED.holder(), Config.calculateWeightEachNTicks + 5, 0, false, visible);
   }
 }

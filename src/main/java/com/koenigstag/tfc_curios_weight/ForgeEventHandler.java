@@ -29,10 +29,10 @@ public final class ForgeEventHandler {
         && level.getGameTime() % Config.calculateWeightEachNTicks == 0) {
       final int hugeHeavyCount = CuriosHelpers.countOverburdened(player);
       if (hugeHeavyCount >= 1) {
-        player.addEffect(Helpers.getExhausted(false));
+        player.addEffect(CuriosHelpers.getExhausted(false));
       }
       if (hugeHeavyCount >= 2) {
-        player.addEffect(Helpers.getOverburdened(false));
+        player.addEffect(CuriosHelpers.getOverburdened(false));
       }
     }
   }
