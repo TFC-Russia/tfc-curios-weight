@@ -8,8 +8,9 @@ This is a simple TFC addon that adds a weight calculations to the TFC mod for Cu
 
 ## Requirements
 
-- This mod requires the Curios API v5.10.0+
-- This mod requires TerraFirmaCraft v3.2.7+ for mc 1.20
+- Minecraft 1.21.1 on NeoForge 21.1.0+ (built against 21.1.265)
+- TerraFirmaCraft 4.2.0+ (built against 4.2.12)
+- Curios API 9.5.0+ (built against 9.5.1+1.21.1)
 
 ## Changelog
 
