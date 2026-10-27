@@ -1,30 +1,27 @@
 package com.koenigstag.tfc_curios_weight;
 
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.TickEvent.PlayerTickEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import net.dries007.tfc.config.TFCConfig;
-import net.dries007.tfc.util.Helpers;
 
 public final class ForgeEventHandler {
 
   public static void init() {
-    final IEventBus bus = MinecraftForge.EVENT_BUS;
+    final IEventBus bus = NeoForge.EVENT_BUS;
 
     bus.addListener(ForgeEventHandler::onPlayerTick);
   }
 
-  public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-    // When facing up in the rain, player slowly recovers thirst.
-    final Player player = event.player;
+  // PlayerTickEvent.Post fires once, after the tick; the 1.20 event fired on both the START and the END phase
+  public static void onPlayerTick(PlayerTickEvent.Post event) {
+    final Player player = event.getEntity();
     final Level level = player.level();
 
-    // Copy of TFC's onPlayerTick but with CuriosHelper calculations
+    // Copy of the TFC onPlayerTick but with CuriosHelper calculations
     if (!level.isClientSide() && !player.getAbilities().invulnerable && TFCConfig.SERVER.enableOverburdening.get()
         && level.getGameTime() % Config.calculateWeightEachNTicks == 0) {
       final int hugeHeavyCount = CuriosHelpers.countOverburdened(player);

@@ -1,32 +1,32 @@
 package com.koenigstag.tfc_curios_weight;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.ISlotType;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 public class Config {
-        private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+        private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-        private static final ForgeConfigSpec.BooleanValue ENABLE_CURIOS_SLOTS_CHECK = BUILDER
+        private static final ModConfigSpec.BooleanValue ENABLE_CURIOS_SLOTS_CHECK = BUILDER
                         .comment("Whether to calculate overweight effects checking Curios slots. Disables the whole purpose of this addon")
                         .define("enable_curios_slots_weight_check", true);
 
-        public static final ForgeConfigSpec.IntValue CALCULATE_WEIGHT_EACH_N_TICKS = BUILDER
+        public static final ModConfigSpec.IntValue CALCULATE_WEIGHT_EACH_N_TICKS = BUILDER
                         .comment("Calculate weight every N ticks. Default: 20 ticks = 1 sec")
                         .defineInRange("calculate_weight_each_n_ticks", 20, 1, Integer.MAX_VALUE);
 
-        private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SLOT_NAME_STRINGS = BUILDER
+        private static final ModConfigSpec.ConfigValue<List<? extends String>> SLOT_NAME_STRINGS = BUILDER
                         .comment("WIP. A list of slots to check in weight calculation.")
-                        .defineListAllowEmpty("curios_slots", List.of(), Config::validateSlotName);
+                        .defineListAllowEmpty("curios_slots", List.of(), () -> "back", Config::validateSlotName);
 
-        static final ForgeConfigSpec SPEC = BUILDER.build();
+        static final ModConfigSpec SPEC = BUILDER.build();
 
         public static boolean enableWeightCalculations;
         public static List<ISlotType> curios_slots;
