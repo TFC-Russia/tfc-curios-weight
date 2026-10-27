@@ -28,13 +28,13 @@ description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="tfc"
     mandatory=true
-    versionRange="${tfc_version}"
+    versionRange="${tfc_version_range}"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="curios"
     mandatory=true
-    versionRange="${curios_version}"
+    versionRange="${curios_version_range}"
     ordering="AFTER"
     side="BOTH"
