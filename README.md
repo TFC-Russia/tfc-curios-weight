@@ -1,5 +1,7 @@
 # TFC Curios Weight
 
+**English** · [Русский](README.ru.md)
+
 ## About
 
 This is a simple TFC addon that adds a weight calculations to the TFC mod for Curios slots. It is a copy of the same calculations for player inventory from TFC but for Curios slots.
