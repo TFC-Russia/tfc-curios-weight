@@ -39,21 +39,35 @@ The numbers live in `gradle.properties`. On `1.21.x` bumping a dependency means 
 
 ## Releasing
 
-A GitHub release publishes the mod. `.github/workflows/publish.yml` builds the jar of the commit the release points at and uploads it to [CurseForge](https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight) and to the release itself.
+A GitHub release publishes the mod. `.github/workflows/publish.yml` builds the jar of the commit the release points at and uploads it to [CurseForge](https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight) and to the release itself. `scripts/release.sh` sets the version and creates that release:
 
-1. Bump `mod_version` in `gradle.properties` on the branch, as [VERSIONING.md](VERSIONING.md) describes.
-2. Create a release on that branch whose tag is `v` plus that version:
+1. On the release branch, add a `## <version>` entry at the top of both `CHANGELOG.md` and `CHANGELOG.ru.md`, and commit it.
+2. Run the script with the mod's own version, without the game version:
 
    ```
-   gh release create v1.0.1+1.20.1 --target 1.20.x --title "1.0.1+1.20.1" --notes "What changed"
+   bash scripts/release.sh 1.0.2
    ```
 
-The notes become the CurseForge changelog, and a pre-release goes up as a beta. When the tag and `mod_version` disagree, the workflow stops before uploading anything. The upload needs a CurseForge API token in the `CURSEFORGE_TOKEN` repository secret.
+The script stops before changing anything when the branch is not a release branch, has uncommitted changes, is behind `origin`, when the version is not newer than `mod_version` or its tag already exists, or when either changelog lacks the entry. Otherwise it shows the plan and asks before it:
+
+- sets `mod_version` to `1.0.2+<minecraft version>`, as [VERSIONING.md](VERSIONING.md) describes, and commits that;
+- pushes the branch;
+- creates the release `v1.0.2+<minecraft version>` with the `CHANGELOG.md` entry as its notes.
+
+| Option | Effect |
+| --- | --- |
+| `--dry-run` | Run the checks and show the plan, change nothing |
+| `--prerelease` | Publish a pre-release, which goes up to CurseForge as a beta |
+| `--yes` | Skip the question |
+
+The script needs git and the GitHub CLI (`gh`) signed in to an account that can push to the repository. On Windows, run it from Git Bash.
+
+The release notes become the CurseForge changelog. When the tag and `mod_version` disagree, the workflow stops before uploading anything. The upload needs a CurseForge API token in the `CURSEFORGE_TOKEN` repository secret.
 
 To only build the jar on CI, run the workflow by hand: Actions → Publish → Run workflow.
 
 ## Before opening a pull request
 
 - `./gradlew build` passes on the branch you changed.
-- `README.md` and `README.ru.md` still say the same thing.
+- `README.md` and `README.ru.md` still say the same thing, and so do `CHANGELOG.md` and `CHANGELOG.ru.md`.
 - Code and comments are in English.
