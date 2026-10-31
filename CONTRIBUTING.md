@@ -15,15 +15,10 @@ Open a pull request against the branch your change belongs to. For a change that
 
 ## Building
 
-The required Java version differs per branch. `1.21.x` pins it in `.jabbarc`, so [jabba](https://github.com/shyiko/jabba) picks it up with no argument:
+The required Java version differs per branch. Each branch pins it in `.jabbarc`, so [jabba](https://github.com/shyiko/jabba) picks it up with no argument:
 
 ```
-# on 1.21.x
 jabba use
-./gradlew build
-
-# on 1.20.x
-jabba use system@17
 ./gradlew build
 ```
 
@@ -35,8 +30,10 @@ Both branches compile against TerraFirmaCraft and the Curios API. Gradle fetches
 
 | Branch | Source | Versions |
 | --- | --- | --- |
-| `1.20.x` | CurseMaven, by CurseForge file id | TFC 3.2.7, Curios 5.10.0 |
+| `1.20.x` | CurseMaven, by CurseForge file id | TFC 3.2.28, Curios 5.10.0 |
 | `1.21.x` | Modrinth maven, by version | TFC 4.2.12, Curios 9.5.1+1.21.1 |
+
+On `1.20.x` Gradle also fetches Patchouli, which TFC requires, but only to run the game with `./gradlew runClient`; the mod itself does not depend on it.
 
 The numbers live in `gradle.properties`. On `1.21.x` bumping a dependency means editing one line; on `1.20.x` it also means looking up the new CurseForge file id.
 
