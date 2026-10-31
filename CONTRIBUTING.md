@@ -30,8 +30,10 @@ Both branches compile against TerraFirmaCraft and the Curios API. Gradle fetches
 
 | Branch | Source | Versions |
 | --- | --- | --- |
-| `1.20.x` | CurseMaven, by CurseForge file id | TFC 3.2.7, Curios 5.10.0 |
+| `1.20.x` | CurseMaven, by CurseForge file id | TFC 3.2.28, Curios 5.10.0 |
 | `1.21.x` | Modrinth maven, by version | TFC 4.2.12, Curios 9.5.1+1.21.1 |
+
+On `1.20.x` Gradle also fetches Patchouli, which TFC requires, but only to run the game with `./gradlew runClient`; the mod itself does not depend on it.
 
 The numbers live in `gradle.properties`. On `1.21.x` bumping a dependency means editing one line; on `1.20.x` it also means looking up the new CurseForge file id.
 
