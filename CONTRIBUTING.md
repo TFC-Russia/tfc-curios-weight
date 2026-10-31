@@ -15,15 +15,10 @@ Open a pull request against the branch your change belongs to. For a change that
 
 ## Building
 
-The required Java version differs per branch. `1.21.x` pins it in `.jabbarc`, so [jabba](https://github.com/shyiko/jabba) picks it up with no argument:
+The required Java version differs per branch. Each branch pins it in `.jabbarc`, so [jabba](https://github.com/shyiko/jabba) picks it up with no argument:
 
 ```
-# on 1.21.x
 jabba use
-./gradlew build
-
-# on 1.20.x
-jabba use system@17
 ./gradlew build
 ```
 
