@@ -37,6 +37,21 @@ On `1.20.x` Gradle also fetches Patchouli, which TFC requires, but only to run t
 
 The numbers live in `gradle.properties`. On `1.21.x` bumping a dependency means editing one line; on `1.20.x` it also means looking up the new CurseForge file id.
 
+## Releasing
+
+A GitHub release publishes the mod. `.github/workflows/publish.yml` builds the jar of the commit the release points at and uploads it to [CurseForge](https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight) and to the release itself.
+
+1. Bump `mod_version` in `gradle.properties` on the branch, as [VERSIONING.md](VERSIONING.md) describes.
+2. Create a release on that branch whose tag is `v` plus that version:
+
+   ```
+   gh release create v1.0.1+1.20.1 --target 1.20.x --title "1.0.1+1.20.1" --notes "What changed"
+   ```
+
+The notes become the CurseForge changelog, and a pre-release goes up as a beta. When the tag and `mod_version` disagree, the workflow stops before uploading anything. The upload needs a CurseForge API token in the `CURSEFORGE_TOKEN` repository secret.
+
+To only build the jar on CI, run the workflow by hand: Actions → Publish → Run workflow.
+
 ## Before opening a pull request
 
 - `./gradlew build` passes on the branch you changed.
