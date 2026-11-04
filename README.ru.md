@@ -10,6 +10,8 @@
 
 На CurseForge: [TFC Curios Weight](https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight).
 
+![Две сумки в слотах Curios и эффекты TFC Overburdened и Exhausted](docs/curios-overburdened.png)
+
 <br clear="right">
 
 ## Требования
