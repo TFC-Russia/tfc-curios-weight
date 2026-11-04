@@ -17,6 +17,8 @@ The project's other fields, which are also web-only:
   Source   https://github.com/TFC-Russia/tfc-curios-weight
   Issues   https://github.com/TFC-Russia/tfc-curios-weight/issues
   Avatar   docs/avatar.png in this repository (256x256; CurseForge asks for 400x400)
+  Images   docs/curios-overburdened.png, linked below from GitHub, since the page
+           cannot point to a path in the repository
   Page     https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight, project id 1120348
 -->
 
@@ -25,6 +27,8 @@ The project's other fields, which are also web-only:
 TerraFirmaCraft makes you Exhausted while you carry one huge and very heavy item and Overburdened
 while you carry two — but it only ever looks in your inventory. This addon makes it look in your
 Curios slots as well, so a backpack worn on your back counts like one carried in a slot.
+
+![Two bags worn in Curios slots, with TFC's Overburdened and Exhausted effects on](https://raw.githubusercontent.com/TFC-Russia/tfc-curios-weight/1.21.x/docs/curios-overburdened.png)
 
 ## What it does
 

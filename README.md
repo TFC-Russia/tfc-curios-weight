@@ -10,6 +10,8 @@ This is a simple TFC addon that adds a weight calculations to the TFC mod for Cu
 
 On CurseForge: [TFC Curios Weight](https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight).
 
+![Two bags worn in Curios slots, with TFC's Overburdened and Exhausted effects on](docs/curios-overburdened.png)
+
 <br clear="right">
 
 ## Requirements
