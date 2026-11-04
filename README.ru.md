@@ -1,12 +1,16 @@
 # TFC Curios Weight
 
-<img src="docs/avatar.png" alt="" width="120" align="right">
-
 [English](README.md) · **Русский**
 
 ## О моде
 
+<img src="docs/avatar.png" alt="" width="120" align="right">
+
 Простой аддон к TFC, который распространяет расчёт веса из TFC на слоты Curios. Это та же логика, которую TFC применяет к инвентарю игрока, только для слотов Curios.
+
+На CurseForge: [TFC Curios Weight](https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight).
+
+<br clear="right">
 
 ## Требования
 
