@@ -1,5 +1,7 @@
 # TFC Curios Weight
 
+<img src="docs/avatar.png" alt="" width="120" align="right">
+
 **English** · [Русский](README.ru.md)
 
 ## About

@@ -16,7 +16,7 @@ The project's other fields, which are also web-only:
   License  MIT
   Source   https://github.com/TFC-Russia/tfc-curios-weight
   Issues   https://github.com/TFC-Russia/tfc-curios-weight/issues
-  Avatar   tfc_curios_weight.png in this repository (256x256; CurseForge asks for 400x400)
+  Avatar   docs/avatar.png in this repository (256x256; CurseForge asks for 400x400)
   Page     https://www.curseforge.com/minecraft/mc-mods/tfc-curios-weight, project id 1120348
 -->
 
