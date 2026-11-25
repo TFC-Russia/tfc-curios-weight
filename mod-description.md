@@ -52,6 +52,12 @@ TFC's `enableOverburdening` still governs all of this, and players in creative a
 | `calculate_weight_each_n_ticks` | `20` | How often the check runs. 20 ticks is one second |
 | `curios_slots` | `[]` | Not implemented yet. Every slot is counted |
 
+`world/serverconfig/tfc_curios_weight-server.toml`, per world (Minecraft 1.20.1, from 1.0.2):
+
+| Option | Default | What it does |
+|---|---|---|
+| `how_many_huge_heavy_items_overburdens` | `2` | How many huge and very heavy items carried in the inventory make you Overburdened: 2 is TFC's rule, 1 makes a single one enough. Armor worn in its slot and a shield in the off hand don't count as carried here, and one such item in a Curios slot is still free |
+
 ## Requirements
 
 | Minecraft | Loader | TerraFirmaCraft | Curios API |
