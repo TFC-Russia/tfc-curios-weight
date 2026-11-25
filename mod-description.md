@@ -52,7 +52,7 @@ TFC's `enableOverburdening` still governs all of this, and players in creative a
 | `calculate_weight_each_n_ticks` | `20` | How often the check runs. 20 ticks is one second |
 | `curios_slots` | `[]` | Not implemented yet. Every slot is counted |
 
-`world/serverconfig/tfc_curios_weight-server.toml`, per world (Minecraft 1.20.1, from 1.0.2):
+`tfc_curios_weight-server.toml`, from 1.0.2: on Minecraft 1.20.1 in `world/serverconfig/`, per world; on 1.21.1 in `config/`. The server sends it to the players who join:
 
 | Option | Default | What it does |
 |---|---|---|
