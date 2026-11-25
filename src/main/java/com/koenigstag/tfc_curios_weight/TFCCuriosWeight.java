@@ -25,6 +25,7 @@ public class TFCCuriosWeight
         ForgeEventHandler.init();
 
         container.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        container.registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

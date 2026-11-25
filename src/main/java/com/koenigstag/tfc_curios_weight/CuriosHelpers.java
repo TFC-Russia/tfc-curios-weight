@@ -2,6 +2,8 @@ package com.koenigstag.tfc_curios_weight;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.ModList;
@@ -26,6 +28,14 @@ public class CuriosHelpers {
 
     // Counts player inventory to the full weight
     overweightCount += countOverburdened(container);
+
+    // how_many_huge_heavy_items_overburdens: that many such items carried (not worn) overburden. The count above
+    // includes worn ones, so it is never below the carried count and saves the second pass when it is too low
+    final int overburdenAt = Config.hugeHeavyItemsToOverburden;
+
+    if (overweightCount >= overburdenAt && countCarriedHugeHeavyItems(livingEntity.getInventory()) >= overburdenAt) {
+      return 2;
+    }
 
     if (Config.enableWeightCalculations == false) {
       return overweightCount;
@@ -88,6 +98,33 @@ public class CuriosHelpers {
     }
 
     return 0;
+  }
+
+  /**
+   * How many huge and very heavy items the inventory holds that are carried rather than worn. Worn are armor in the
+   * armor slot it is made for and a shield in the off hand: a pack can make metal shields huge and very heavy, and
+   * with how_many_huge_heavy_items_overburdens = 1 a player holding one up would otherwise be unable to walk.
+   */
+  public static int countCarriedHugeHeavyItems(final Inventory inventory) {
+    int count = 0;
+
+    for (final ItemStack stack : inventory.items) {
+      count += getItemStackWeightInt(stack);
+    }
+
+    // HUMANOID_ARMOR: 1.21 also has the BODY slot of animal armor, which a player inventory does not hold
+    for (final EquipmentSlot slot : EquipmentSlot.values()) {
+      if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
+        count += getCarriedWeightInt(inventory.player, inventory.armor.get(slot.getIndex()), slot);
+      }
+    }
+
+    return count + getCarriedWeightInt(inventory.player, inventory.offhand.get(0), EquipmentSlot.OFFHAND);
+  }
+
+  // getEquipmentSlotForItem became an instance method in 1.20.5
+  private static int getCarriedWeightInt(final Player player, final ItemStack stack, final EquipmentSlot slot) {
+    return player.getEquipmentSlotForItem(stack) == slot ? 0 : getItemStackWeightInt(stack);
   }
 
   public static MobEffectInstance getOverburdened(boolean visible) {
